@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <p class="mb-1">First Name: ${user.firstName}</p>
         <p class="mb-1">Test Type: ${user.testType}</p>
         <p class="mb-1">Test Result: ${user.testResult}</p>
+        <p class="mb-1">Test Comment: ${user.comment}</p>
+
       </div>
     `).join('');
     document.getElementById('appointments').innerHTML = appointmentsHTML;
