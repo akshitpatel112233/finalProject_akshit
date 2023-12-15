@@ -71,14 +71,14 @@ const loginUser = async (req, res) => {
     req.session.userId = user._id;
     req.session.userType = user.user_type;
     res.redirect("/");
-  } catch {
+  } catch (error) {
+    console.error("Login error:", error);
     return res.render("login", {
       error: "Something went wrong! Please try again later.",
       message: "",
       title: "Sign UP | DriveTest",
     });
   }
-};
 
 const logoutUser = async (req, res) => {
   try {
