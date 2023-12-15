@@ -9,7 +9,7 @@ slotRouter.get("/get-slots-by-date", slotController.getSlotsByDate);
 
 slotRouter.post(
   "/create-slots",
-  [authentication, roleBasedAccess(ROLES.ADMIN)],
+  [ roleBasedAccess(ROLES.ADMIN)],
   slotController.createSlot
 );
 

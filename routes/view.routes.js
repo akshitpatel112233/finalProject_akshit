@@ -11,24 +11,24 @@ viewRouter.get("/", viewController.dashboard);
 viewRouter.get("/signup", redirectIfAuthenticated, viewController.signup);
 
 viewRouter.get("/login", redirectIfAuthenticated, viewController.login);
-viewRouter.get("/examiner", [authentication, roleBasedAccess(ROLES.EXAMINER)],viewController.examiner);
+viewRouter.get("/examiner", [ roleBasedAccess(ROLES.EXAMINER)],viewController.examiner);
 
 
 viewRouter.get(
   "/g",
-  [authentication, roleBasedAccess(ROLES.DRIVER)],
+  [ roleBasedAccess(ROLES.DRIVER)],
   viewController.g
 );
 
 viewRouter.get(
   "/g2",
-  [authentication, roleBasedAccess(ROLES.DRIVER)],
+  [ roleBasedAccess(ROLES.DRIVER)],
   viewController.g2
 );
 
 viewRouter.get(
   "/create-appointment-slots",
-  [authentication, roleBasedAccess(ROLES.ADMIN)],
+  [ roleBasedAccess(ROLES.ADMIN)],
   viewController.createAppointmentSlots
 );
 
