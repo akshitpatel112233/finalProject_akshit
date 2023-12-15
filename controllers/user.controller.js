@@ -367,13 +367,39 @@ const getExamResult = async(req,res)=>{
   console.log(getExamResultData)
   res.json(getExamResultData)
 }
-const getExamResultForUser = async(req,res)=>{
-  let query = { _id:req.session.userId,testResult: { $ne: null } };
-  let  getExamResultData = await User.find(query);
+const getExamResultForUser = async (req, res) => {
+  try {
+    let query = { _id: req.session.userId, testResult: { $ne: null } };
+    let getExamResultData = await User.find(query);
 
-  res.json(getExamResultData)
+    if (getExamResultData.length > 0 && getExamResultData[0].testType === 'G2') {
+      return res.json(getExamResultData); 
+    }
 
-}
+    res.json(null); 
+  } catch (error) {
+    console.error('Error in getExamResultForUser:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+const getExamResultForUserG = async (req, res) => {
+  try {
+    let query = { _id: req.session.userId, testResult: { $ne: null } };
+    let getExamResultData = await User.find(query);
+  
+
+    if (getExamResultData.length > 0 && getExamResultData[0].testType === 'G') {
+      return res.json(getExamResultData);
+    }
+
+    res.json(null); 
+  } catch (error) {
+    console.error('Error in getExamResultForUserG:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
 
 
-module.exports = { updateData,updateDataForGDriver,getExamData,updateUserExamInfo,updateResult,getExamResult,getExamResultForUser };
+
+module.exports = { updateData,updateDataForGDriver,getExamData,updateUserExamInfo,updateResult,getExamResult,getExamResultForUser,getExamResultForUserG };

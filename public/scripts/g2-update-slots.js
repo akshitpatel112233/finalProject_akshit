@@ -48,32 +48,7 @@ const handleDateChange = async (event) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const slotDateInput = document.getElementById("slot_date");
-  const loadAppointments = () => {
-    fetch('/getExamResultForUser')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => updateAppointments(data))
-      .catch(error => console.error('Error fetching appointments:', error));
-  };
-
-  const updateAppointments = (appointments) => {
-    const appointmentsHTML = appointments.map(user => `
-      <div class="custom card">
-        <p class="mb-1">First Name: ${user.firstName}</p>
-        <p class="mb-1">Test Type: ${user.testType}</p>
-        <p class="mb-1">Test Result: ${user.testResult}</p>
-        <p class="mb-1">Test Comment: ${user.comment}</p>
-
-      </div>
-    `).join('');
-    document.getElementById('appointments').innerHTML = appointmentsHTML;
-  };
-
-  loadAppointments();
+  
 
   slotDateInput.addEventListener("change", handleDateChange);
 });

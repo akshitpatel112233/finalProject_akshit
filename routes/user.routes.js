@@ -9,6 +9,8 @@ userRouter.post("/getUserDetailsForExam/:id",userController.updateUserExamInfo)
 userRouter.post("/result/:id",userController.updateResult)
 userRouter.get("/getUserExamResults", userController.getExamResult);
 userRouter.get("/getExamResultForUser", userController.getExamResultForUser);
+userRouter.get("/getExamResultForUserG", userController.getExamResultForUserG);
+
 
 
 module.exports = userRouter;
