@@ -1,0 +1,41 @@
+
+<%- include("components/head") %>
+
+    <section class="examiner" id="examiner">
+        <% if(data){ %>
+            <section class="user-details-container margin-2">
+                <h4>User Details</h4>
+                <p class="detail-item">First Name: <%= data.user.firstName %></p>
+                <p class="detail-item">Last Name: <%= data.user.lastName %></p>
+                <p class="detail-item">Car: <%= data.user.car_details.model %></p>
+                <p class="detail-item">License number: <%= data.user.licenseNumber %></p>
+                <p class="detail-item">Appointment Date: <%= data.appointment.date %></p>
+                <p class="detail-item">Appointment Time: <%= data.appointment.time %></p>
+                <p class="detail-item">Test Type: <%= data.user.testType %></p>
+        
+                <form action="/result/<%= data.user._id %>" method="post">
+                    <fieldset class="form-group">
+                        <legend>Comments</legend>
+                        <textarea class="form-control" id="comment" rows="3" name="comment" aria-label="Comment"><%= data.user.comment || '' %></textarea>
+                    </fieldset>
+                    
+                    <fieldset class="result-selection mt-4">
+                        <legend>Choose Result:</legend>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="result" id="passRadio" value="PASS" <%= data.user.testResult === 'PASS' ? 'checked' : '' %>>
+                            PASS
+                        </label>
+                        <label class="form-check">
+                            <input class="form-check-input" type="radio" name="result" id="failRadio" value="FAIL" <%= data.user.testResult === 'FAIL' ? 'checked' : '' %>>
+                            FAIL
+                        </label>
+                    </fieldset>
+                    <button class="btn btn-primary margin-2" type="submit">Submit</button>
+                </form>
+            </section>
+        <% } %>
+        
+        
+    </section>
+
+    <script type="text/javascript" src="/scripts/examiner.js"></script>

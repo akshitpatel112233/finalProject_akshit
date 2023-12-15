@@ -1,0 +1,102 @@
+<%- include("components/head") %>
+
+    <section class="g2-form" id="g2-form">
+        <div class="section personal-info">
+            <h2>Personal Information</h2>
+
+            <p>Fill the required information to continue</p>
+            <% if(typeof error !==undefined && error.length){ %>
+                <p style="color: red;font-weight: bold;">
+                    <%= error %>
+                </p>
+                <% } %>
+                    <% if(typeof message !==undefined && message.length){ %>
+                        <p style="color: green;font-weight: bold;">
+                            <%= message %>
+                        </p>
+                        <% } %>
+                            <form method="POST" action="/g2" id="g2-form">
+                                <div class="form-group">
+                                    <label for="firstName">First Name<super>*</super></label>
+                                    <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name<super>*</super></label>
+                                    <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>"
+                                        required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="licenseNumber">License Number (8 characters)<super>*</super></label>
+                                    <input type="text" id="licenseNumber" name="licenseNumber" minlength="8"
+                                        maxlength="8" pattern="[a-zA-Z0-9]+"
+                                        value="<%= user.licenseNumber ? 'XXXXXXXX (Can not be changed)':'' %>" <%
+                                        if(!!user.licenseNumber) { %>
+                                    disabled <% } %> required />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth<super>*</super></label>
+                                    <input type="date" id="dob" name="dob" value="<%= dobString %>" required />
+                                </div>
+
+                                <div class="section car-info">
+                                    <h2>Car Information</h2>
+                                    <div class="form-group">
+                                        <label for="make">Make<super>*</super></label>
+                                        <input type="text" id="make" name="make" value="<%= user.car_details.make  %>"
+                                            required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="model">Model<super>*</super></label>
+                                        <input type="text" id="model" name="model" value="<%= user.car_details.model %>"
+                                            required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="year">Year<super>*</super></label>
+                                        <input type="number" id="year" name="year" min="1800" max="2023"
+                                            value="<%= user.car_details.year %>" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="plateNumber">Plate Number<super>*</super></label>
+                                        <input type="text" id="plateNumber" name="plateNumber"
+                                            value="<%= user.car_details.plateNumber %>" required />
+                                    </div>
+                                </div>
+                                <div class="section">
+                                    <h2>Book Appointment</h2>
+                                    <label for="slot_date">Date<super>*</super></label>
+                                    <input type="date" id="slot_date" name="slot_date" min=<%=new
+                                        Date().toLocaleString('fr-ca').split(" ")[0] %> 
+                                                                 value=<%= dobString==="" ? "": appointmentObject ?appointmentObject.date:""  %> 
+                                                                  required />
+                                                           <div class=" form-group">
+                                    <label for="appointment_id">Time<super>*</super></label>
+                                    <select class="form-select" type="date" id="appointment_id" name="appointment_id"
+                                        required>
+                                        <% if(appointmentObject && appointmentSlots && appointmentSlots.length &&
+                                            dobString!=="" ) { %>
+                                            <% appointmentSlots.forEach(element=> { %>
+                                                <option value=<%=element._id || "" %>
+                                                    <% if(element.selected){ %> selected=<%= !!element.selected %>
+                                                            <% } if(!element.isAvailable) { %> disabled <% } %>
+                                                                    >
+                                                                    <%= element.time %>
+                                                </option>
+                                                <% }) %>
+                                                    <% } else { %>
+
+                                                        <option selected disabled>Select a date first.</option>
+                                                        <% } %>
+                                    </select>
+                                </div>
+        </div>
+        <button class="btn-submit" type="submit">Submit</button>
+        <div class="examResults">
+            <div id="appointments"></div>
+        </div>
+        </form>
+        </div>
+    </section>
+  
+    <script type="text/javascript" src="/scripts/g2-update-slots.js"></script>

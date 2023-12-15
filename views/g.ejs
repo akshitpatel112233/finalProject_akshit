@@ -1,0 +1,80 @@
+<div>
+        <section class="g2-form" id="g2-form">
+            <div class="section personal-info">
+          
+                <form action="/timeBookG" method="post">
+                
+                            <% if(typeof message !==undefined && message.length){ %>
+                                <p style="color: green;font-weight: bold;">
+                                    <%= message %>
+                                </p>
+                                <% } %>
+                        <div class="section">
+                            <h2>Book Appointment</h2>
+                            <label for="slot_date">Date<super>*</super></label>
+                            <input type="date" id="slot_date" name="slot_date" min=<%=new
+                                Date().toLocaleString('fr-ca').split(" ")[0] %> 
+                                                         value=<%= dobString==="" ? "": appointmentObject ?appointmentObject.date:""  %> 
+                                                          required />
+                                                   <div class=" form-group">
+                            <label for="appointment_id">Time<super>*</super></label>
+                            <select class="form-select" type="date" id="appointment_id" name="appointment_id"
+                                required>
+                                <% if(appointmentObject && appointmentSlots && appointmentSlots.length &&
+                                    dobString!=="" ) { %>
+                                    <% appointmentSlots.forEach(element=> { %>
+                                        <option value=<%=element._id || "" %>
+                                            <% if(element.selected){ %> selected=<%= !!element.selected %>
+                                                    <% } if(!element.isAvailable) { %> disabled <% } %>
+                                                            >
+                                                            <%= element.time %>
+                                        </option>
+                                        <% }) %>
+                                            <% } else { %>
+
+                                                <option selected disabled>Select a date first.</option>
+                                                <% } %>
+                            </select>
+                        </div>
+                        <button class="btn-submit" type="submit">Submit</button>
+
+                </form>
+                <div class="examResults">
+                    <div id="appointments"></div>
+                </div>
+                
+            </div>
+</div>
+</section>
+<script type="text/javascript" src="/scripts/g2-update-slots.js"></script>
+<script>
+      function loadAppointments(testType = "") {
+    fetch(`/getExamResultForUserG`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => updateAppointments(data))
+      .catch(error => console.error("Error fetching appointments:", error));
+  }
+
+  function updateAppointments(appointments) {
+    const appointmentsHTML = appointments.map(user => {
+      const appointment = user.appointmentDetails;
+      return `
+        <div class="custom card">
+          <p class="mb-1">First Name: ${user.firstName}</p>
+          <p class="mb-1">Test Type: ${user.testType}</p>
+          <p class="mb-1">Test Result: ${user.testResult}</p>
+        </div>`;
+    }).join("");
+    document.getElementById("appointments").innerHTML = appointmentsHTML;
+  }
+
+
+
+  loadAppointments();
+</script>
+    </div>

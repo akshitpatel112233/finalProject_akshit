@@ -1,0 +1,28 @@
+<header>
+    <h1 style="font-weight: bolder;">
+        <a href="/" class="logo">Book DriveTest</a>
+    </h1>
+    <ul class="navlist">
+        <li><a href="/">DASHBOARD</a></li>
+        <% if(loggedIn) { %>
+            <% if(userType==="driver" ) { %>
+                <li><a href="g">G TEST</a></li>
+                <li><a href="g2">G2 TEST</a></li>
+                <% } %>
+                <% if(userType==="examiner" ) { %>
+                    <li><a href="/examiner">examiner</a></li>
+                    <% } %>
+                    <% if(userType==="admin" ) { %>
+                        <li><a href="create-appointment-slots">Create Appointment Slots</a></li>
+                        <% } %>
+                       
+                            <li><a href="/logout">Log out</a></li>
+                            <% } %>
+
+                                <% if(!loggedIn) { %>
+                                    <li><a href="login">LOGIN</a></li>
+                                    <li><a href="signup">SIGN UP</a></li>
+                                    <% } %>
+    </ul>
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>

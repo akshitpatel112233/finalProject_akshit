@@ -1,0 +1,381 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;800;900&family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Style for the header */
+header {
+  background-color: orange; /* Orange background color */
+  color: white; /* White text color */
+  padding: 10px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+header h1 a {
+  text-decoration: none;
+}
+header h1 a:hover {
+  color: whitesmoke;
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 24px;
+  color: white; /* White color for the logo text */
+}
+
+.navlist {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.navlist li {
+  padding: 0px 5px;
+  border-radius: 4px;
+}
+
+.navlist li:hover a {
+  color: rgba(243, 240, 240, 1);
+}
+
+.navlist li a {
+  transition: all 200ms ease;
+  text-decoration: none;
+  color: white; /* White color for navigation links */
+  font-weight: 600;
+}
+
+#menu-icon {
+  display: none;
+}
+
+/* Style for the about section */
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: right;
+  color: white; /* White text color */
+}
+
+.about-text h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: orange; /* Orange color for the heading */
+}
+
+.about-text p {
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 1150px) {
+  .about-text h1 {
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (max-width: 1010px) {
+  .about-text h1 {
+    font-size: 3rem;
+  }
+}
+@media only screen and (max-width: 870px) {
+  .about-text h1 {
+    font-size: 2rem;
+  }
+}
+@media only screen and (max-width: 724px) {
+  .about {
+    text-align: center;
+  }
+  .about-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+}
+
+.btn {
+  background-color: orange;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #ffa500; /* A lighter shade of orange on hover */
+}
+
+/* Style for the header (same as previous) */
+/* ... */
+
+/* Style for the login section */
+.login {
+  background-color: gray;
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+
+.login-form {
+  background-color: orange;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-heading {
+  font-size: 24px;
+  color: white;
+}
+
+.form-group {
+  margin: 20px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-login {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #ffa500;
+}
+/* Style for the header (same as previous) */
+/* ... */
+
+/* Style for the G2 form section */
+.g2-form {
+  background-color: gray;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.section {
+  background-color: orange;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.section h2 {
+  font-size: 24px;
+  color: white;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-submit {
+  background-color: orange;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #ffa500;
+}
+
+/* style.css */
+
+/* Body background color */
+body {
+  background-color: gray;
+  /* min-height: 100vh;  */
+  font-family: Arial, sans-serif; /* Choose a suitable font-family */
+}
+
+/* Form container styles */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Gray shadow */
+}
+
+/* Label styles */
+label {
+  display: block;
+  font-weight: bold;
+  color: #ff6600; /* Orange text color */
+  margin-bottom: 8px;
+}
+
+/* Input field styles */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Submit button styles */
+input[type="submit"] {
+  background-color: #ff6600; /* Orange background */
+  color: #ffffff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add hover effect to the submit button */
+input[type="submit"]:hover {
+  background-color: #ff9900; /* Lighter orange background on hover */
+}
+
+.g2-info {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.g2-info > div {
+  flex: 1;
+}
+
+.g2-info > div > div {
+  margin: 8px 2px;
+}
+
+.g2-info > div > div > h2 {
+  margin-left: 0px 10px;
+}
+
+.examiner {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.examiner h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.page-section {
+  padding: 15px;
+}
+
+#filter {
+  padding: 8px 12px;
+  border: 1px solid #ddd; 
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: white;
+  color: #333;
+}
+
+#appointments {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 15px; 
+}
+
+.custom.card {
+  background-color: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.custom.card p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.custom.card .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom.card .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}

@@ -1,0 +1,44 @@
+<%- include("components/head") %>
+
+    <section class="g2-form" id="g2-form">
+        <div class="section personal-info">
+            <h2>Create Appointment Slots</h2>
+
+            <% if(typeof error !==undefined && error.length){ %>
+                <p style="color: red;font-weight: bold;">
+                    <%= error %>
+                </p>
+                <% } %>
+                    <% if(typeof message !==undefined && message.length){ %>
+                        <p style="color: green;font-weight: bold;">
+                            <%= message %>
+                        </p>
+                        <% } %>
+                            <form method="POST" action="/create-slots" id="create-slot-form">
+                                <div class="form-group">
+                                    <label for="slot_date">Date<super>*</super></label>
+                                    <input type="date" id="slot_date" name="slot_date" min=<%=new
+                                        Date().toLocaleString('fr-ca').split(" ")[0] %> required />
+                                </div>
+                                <div class=" form-group">
+                                    <label for="lastName">Time<super>*</super></label>
+                                    <select class="form-select" type="date" id="slot_time" name="slot_time" required>
+                                        <option disabled>Select a time slot</option>
+                                        <% APPOINTMENT_SLOTS.forEach(function(slot){ %>
+                                            <option disabled>
+                                                <%= slot.time %>
+                                            </option>
+                                            <% }) %>
+                                    </select>
+                                </div>
+
+                                <button class="btn-submit" type="submit">Create</button>
+                            </form>
+                            <div class="examResults">
+                                <h3>User Exam Results</h3>
+                                <div id="appointments"></div>
+                            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="/scripts/create-slots.js"></script>

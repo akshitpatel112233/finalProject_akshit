@@ -1,0 +1,14 @@
+<section class="about" id="about">
+  <div class="about-text">
+    <h1 class="animate-text">Book an appoinment with us today.</h1>
+    <p id="aboutpara">We are always here to help you out.</p>
+    <% if(!loggedIn) { %>
+      <a href="/login" class="btn">Login</a>
+      <a href="/signup" class="btn">Signup</a>
+      <% } %>
+        <% if(loggedIn && userType==="driver" ) { %>
+          <a href="/g" class="btn">G Test</a>
+          <a href="/g2" class="btn">G2 Test</a>
+          <% } %>
+  </div>
+</section>
