@@ -71,8 +71,7 @@ const loginUser = async (req, res) => {
     req.session.userId = user._id;
     req.session.userType = user.user_type;
     res.redirect("/");
-  } catch(error) {
-    console.log(error)
+  } catch {
     return res.render("login", {
       error: "Something went wrong! Please try again later.",
       message: "",
